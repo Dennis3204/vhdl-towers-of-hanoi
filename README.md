@@ -15,6 +15,7 @@ What’s implemented in the provided source:
 
 
 ### Objective
+---
 Move all 4 disks from the **left rod** to the **right rod**:
 
 * Move only **one disk at a time**
