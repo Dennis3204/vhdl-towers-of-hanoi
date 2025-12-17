@@ -20,7 +20,8 @@ Move all 4 disks from the **left rod** to the **right rod**:
 * Move only **one disk at a time**
 * You can only move the **top** disk from a rod
 * You may **not** place a larger disk on top of a smaller disk
-
+<br> <br>
+	![](https://github.com/Dennis3204/vhdl-tower-of-hanoi/blob/main/img/tower.jpg)
 ### Controls
 ---
 * **BTNL**: Move selector arrow to the **left** rod
@@ -39,10 +40,6 @@ Move all 4 disks from the **left rod** to the **right rod**:
   * **100 MHz system clock input**
   * **VGA output** (RGB + HSYNC + VSYNC)
   * **Push buttons** mapped to `btnl`, `btnr`, `btn0`
-
-Common boards this matches (constraints-dependent):
-
-* Nexys A7 / Nexys 4 DDR class boards (VGA + 4-bit RGB signals)
 
 Also needed:
 
@@ -257,3 +254,4 @@ This is the Vivado Clock Wizard wrapper module. It’s the interface-level file 
 
 * Vivado Clock Wizard IP wrapper to derive the VGA pixel clock needed by `vga_sync`
 
+<br><br>
