@@ -256,12 +256,9 @@ This is the Vivado Clock Wizard wrapper module. It’s the interface-level file 
 
 * Vivado Clock Wizard IP wrapper to derive the VGA pixel clock needed by `vga_sync`
 
-<br><br>
 ---
 
 ## Contributions
-
-* `clk_in1` — 100 MHz board clock
 
 ### Dennis Ren:
 
