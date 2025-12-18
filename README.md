@@ -1,7 +1,8 @@
 # Towers of Hanoi — CPE 487 Final Project
 
-## Description
 ---
+## Description
+
 This project implements a playable **Towers of Hanoi** game on an FPGA using **VHDL** and renders the game on a **VGA monitor** (800×600 @ ~60 Hz). The player moves an on-screen selector arrow between three rods and uses a button to **pick up** and **drop** disks while obeying the classic Hanoi rule (you can’t place a larger disk on a smaller disk).
 
 What’s implemented in the provided source:
@@ -13,9 +14,9 @@ What’s implemented in the provided source:
 * **Move counter** (4-digit BCD) drawn on-screen (top-right)
 * Automatic **reset after a win** (all disks on the right rod)
 
-
-### Objective
 ---
+### Objective
+
 Move all 4 disks from the **left rod** to the **right rod**:
 
 * Move only **one disk at a time**
@@ -23,8 +24,9 @@ Move all 4 disks from the **left rod** to the **right rod**:
 * You may **not** place a larger disk on top of a smaller disk
 <br> <br>
 	![](https://github.com/Dennis3204/vhdl-tower-of-hanoi/blob/main/img/tower.jpg)
-### Controls
 ---
+### Controls
+
 * **BTNL**: Move selector arrow to the **left** rod
 * **BTNR**: Move selector arrow to the **right** rod
 * **BTN0**: Action button
@@ -33,9 +35,9 @@ Move all 4 disks from the **left rod** to the **right rod**:
   * If a disk is selected: **drop** it onto the selected rod (only if valid)
 
 
-
-## Required Hardware
 ---
+## Required Hardware
+
 * A Xilinx FPGA board with:
 
   * **100 MHz system clock input**
@@ -46,9 +48,9 @@ Also needed:
 
 * **VGA monitor + VGA cable** (or adapter)
 
-
-## Files in This Repo
 ---
+## Files in This Repo
+
 ```text
 towers.vhd               -- top-level: wires clocking + VGA + arrow/game module
 arrow.vhd                -- main game: rods + disks + logic + on-screen counter
@@ -59,9 +61,9 @@ clk_wiz_0_clk_wiz.vhd      -- Vivado clock wizard IP wrapper (pixel clock)
 ```
 
 
-
-## Images / Diagrams
 ---
+## Images / Diagrams
+
 #### Module Diagram (logical)
 
 ```text
@@ -79,9 +81,9 @@ btnl/btnr/btn0  |                   |
                 +-------------------+
 ```
 
-
-## Steps to Run (Vivado)
 ---
+## Steps to Run (Vivado)
+
 1. Create a **new Vivado project** for your board (pick the correct FPGA part).
 2. Add these source files:
 
@@ -102,8 +104,9 @@ btnl/btnr/btn0  |                   |
 5. Open **Hardware Manager** → Program device.
 6. Connect VGA display and play.
 
-## Gameplay Notes (How the VHDL Implements Hanoi)
 ---
+## Gameplay Notes (How the VHDL Implements Hanoi)
+
 ### Rod positions (hardcoded)
 
 In `arrow.vhd`, rods are centered at:
@@ -137,11 +140,11 @@ When all disks are on rod 2 (right rod), the game:
 * resets disk positions back to the left rod
 * waits until the next BTN0 press to clear the move counter
 
-
+---
 ## Inputs and Outputs
 ---
 ## `towers.vhd`
----
+
 This is the project’s top-level module. It connects the clock wizard, VGA timing module, and the game/rendering module, and it handles the left/right button logic that selects which rod the arrow points to.
 
 ### Inputs
@@ -169,7 +172,7 @@ This is the project’s top-level module. It connects the clock wizard, VGA timi
 ---
 
 ## `arrow.vhd`
----
+
 This is the core of the game. This file holds all Towers of Hanoi rules/state and also draws the entire scene (rods, arrow, disks) plus the move counter overlay.
 ### Inputs
 
@@ -198,9 +201,9 @@ This is the core of the game. This file holds all Towers of Hanoi rules/state an
   * move counter + reset behavior
 
 
-
-## `counter.vhd`
 ---
+## `counter.vhd`
+
 This is a VGA overlay renderer for the move counter. It turns the 4-digit BCD move count into on-screen digits by asserting counter_on for pixels that belong to the counter glyphs.
 ### Inputs
 
@@ -216,9 +219,9 @@ This is a VGA overlay renderer for the move counter. It turns the 4-digit BCD mo
 * Renders a 4-digit 7-segment-style counter near the top-right (start position is set by constants in the file)
 
 
-
-## `vga_sync.vhd`
 ---
+## `vga_sync.vhd`
+
 This is the VGA timing generator. This module creates HSYNC/VSYNC pulses and exposes pixel coordinates so other modules can draw per-pixel graphics.
 ### Inputs
 
@@ -237,9 +240,9 @@ This is the VGA timing generator. This module creates HSYNC/VSYNC pulses and exp
 * Exposes pixel coordinates to drive per-pixel drawing logic
 * Uses timing constants consistent with an 800×600-style mode
 
-
-## `clk_wiz_0.vhd` / `clk_wiz_0_clk_wiz.vhd`
 ---
+## `clk_wiz_0.vhd` / `clk_wiz_0_clk_wiz.vhd`
+
 This is the Vivado Clock Wizard wrapper module. It’s the interface-level file Vivado generates so your design can consume a stable pixel clock.
 ### Inputs
 
@@ -252,5 +255,20 @@ This is the Vivado Clock Wizard wrapper module. It’s the interface-level file 
 ### What it does
 
 * Vivado Clock Wizard IP wrapper to derive the VGA pixel clock needed by `vga_sync`
+
+<br><br>
+---
+
+## Contributions
+
+* `clk_in1` — 100 MHz board clock
+
+### Dennis Ren:
+
+* 
+
+### Dritan Xhelilaj:
+
+* 
 
 <br><br>
